@@ -16,24 +16,23 @@ Harness.configure({
     title     : 'Syncler Test Suite',
     
     preload : Joose.is_NodeJS ? [
-        "jsan:Task.Joose.Core",
-        "jsan:Task.JooseX.Namespace.Depended.NodeJS",
+        "Task.Syncler.NodeJSPrereq",
         {
             text : "JooseX.Namespace.Depended.Manager.my.INC = " + JSON.stringify(INC)
-        }
+        },
+        "Task.Syncler.Test"
         
     ] : [
-        "jsan:Task.Joose.Core",
-        "jsan:JooseX.SimpleRequest",
-        "jsan:Task.JooseX.Namespace.Depended.Web",
+        "Task.Syncler.WebPrereq",
         {
             text : "JooseX.Namespace.Depended.Manager.my.INC = " + Ext.encode(Harness.absolutizeINC(INC))
-        }
+        },
+        "Task.Syncler.Test"
     ]
 })
 
 
 Harness.start(
-    '010_sanity.t.js'
+    '010_sanity.t.js',
+    '020_fixture_object_graph.t.js'
 )
-

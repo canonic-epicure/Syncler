@@ -1,6 +1,9 @@
+require.paths.unshift('./lib')
+
 require('Task/Joose/Core')
 require('Task/JooseX/Attribute/Bootstrap')
 require('Task/JooseX/Namespace/Depended/NodeJS')
+require('Task/JooseX/CPS/All')
 require('Data/UUID')
 
 
@@ -13,10 +16,10 @@ var express = require('express')
 
 use([
 
-    'KiokuJS',
-    'KiokuJS.Backend.CouchDB',
-    
-    'Syncler.Server'
+    'KiokuJS', // XXX need to include 'KiokuJS' for Joose.O.each override (move to Data.Visitor?)
+
+    'Syncler.Server',
+    'KiokuJS.Backend.CouchDB'
 
 ], function () {
     
@@ -35,7 +38,6 @@ use([
         backendClass        : KiokuJS.Backend.CouchDB,
         
         backendParams       : {
-            dbName      : 'http://local/5984/test'
         },
         
         app                 : app
