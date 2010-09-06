@@ -19,7 +19,7 @@ Role('Syncler.Vero', {
     after : {
         
         processStem : function () {
-            this.addRole(Vero.Role)
+            this.addRole(Syncler.Vero.Role)
         }
     },
     
