@@ -16,6 +16,7 @@ StartTest(function(t) {
         
 //        fixtures    : [ 'Intrinsic' ],
 //        fixtures    : [ 'ObjectGraph' ],
+//        fixtures    : [ 'StressLoad.Tree' ],        
         
         connect : function () {
             
@@ -44,4 +45,3 @@ StartTest(function(t) {
         t.done()
     })
 })    
-

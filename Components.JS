@@ -34,6 +34,8 @@ COMPONENTS = {
         "jsan:Data.Visitor",
         "jsan:Task.JSON2.Bundle",
         
+        "jsan:Task.JooseX.Observable.Core",
+        
         "jsan:Task.HTTP.Request.Provider.NodeJS"
     ],
     
