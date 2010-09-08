@@ -2,7 +2,7 @@ COMPONENTS = {
     // a comment
     
     "Core" : [
-        "Syncler.Node",
+        "Syncler.Vero",
         "Syncler"
     ],
     
