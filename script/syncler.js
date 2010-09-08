@@ -44,6 +44,14 @@ use([
     })
     
     
+    var bayeux = new faye.NodeAdapter({
+        mount       : '/faye',
+        timeout     : 45
+    })
+    
+    bayeux.attach(app)
+    
+    
     app.listen(8080)    
 })
 
