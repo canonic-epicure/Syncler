@@ -15,8 +15,6 @@ StartTest(function(t) {
         t       : t,
         
 //        fixtures    : [ 'Intrinsic' ],
-//        fixtures    : [ 'ObjectGraph' ],
-//        fixtures    : [ 'StressLoad.Tree' ],        
         
         connect : function () {
             

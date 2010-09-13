@@ -2,8 +2,27 @@ COMPONENTS = {
     // a comment
     
     "Core" : [
+        "Syncler.Vero.Mutation",
+        
+        "Syncler.Vero.Mutation.Create",
+        "Syncler.Vero.Mutation.Delete",
+        "Syncler.Vero.Mutation.Update",
+        
+        "Syncler.Vero.Mutation.Packet",
+        
         "Syncler.Vero",
-        "Syncler"
+        
+        "Syncler.Vero.Role",
+        "Syncler.Vero.Role.Topic",
+        
+        "Syncler.Vero.Attribute",
+        "Syncler.Vero.Meta",
+        
+        
+        "Syncler.Node",
+        
+        "Syncler",
+        "Syncler.Channel"
     ],
     
     
@@ -15,9 +34,6 @@ COMPONENTS = {
         "jsan:Task.JooseX.Namespace.Depended.Web",
         
         "jsan:Task.JooseX.CPS.All",
-        "jsan:Data.UUID",
-        "jsan:Data.Visitor",
-        "jsan:Task.JSON2.Bundle",
         
         "jsan:Task.HTTP.Request.Provider.Web"
     ],
@@ -30,19 +46,28 @@ COMPONENTS = {
         "jsan:Task.JooseX.Namespace.Depended.NodeJS",
         
         "jsan:Task.JooseX.CPS.All",
+        
+        "jsan:Task.HTTP.Request.Provider.NodeJS"
+    ],
+    
+    
+    "Prereq" : [
         "jsan:Data.UUID",
         "jsan:Data.Visitor",
         "jsan:Task.JSON2.Bundle",
-        
         "jsan:Task.JooseX.Observable.Core",
         
-        "jsan:Task.HTTP.Request.Provider.NodeJS"
+        "=static/deps/faye/faye-browser.js"
     ],
     
     
     "Test" : [
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
-        "+Core"
+        
+        "+Prereq",
+        "+Core",
+        
+        "Syncler.Test.Fixture.Basic"
     ]
 }
