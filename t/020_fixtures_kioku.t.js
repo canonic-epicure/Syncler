@@ -14,7 +14,7 @@ StartTest(function(t) {
     new KiokuJS.Test({
         t       : t,
         
-//        fixtures    : [ 'Intrinsic' ],
+//        fixtures    : [ 'StressLoad.Tree' ],
         
         connect : function () {
             
