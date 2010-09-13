@@ -68,6 +68,7 @@ COMPONENTS = {
         "+Prereq",
         "+Core",
         
-        "Syncler.Test.Fixture.Basic"
+        "Syncler.Test.Fixture.Basic",
+        "Syncler.Test.Fixture.Transfer"
     ]
 }
