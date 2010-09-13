@@ -20,9 +20,9 @@ COMPONENTS = {
         
         
         "Syncler.Node",
+        "Syncler.Channel",
         
-        "Syncler",
-        "Syncler.Channel"
+        "Syncler"
     ],
     
     
