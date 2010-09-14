@@ -2,7 +2,7 @@ require.paths.unshift('./lib')
 
 
 var http    = require('http')
-var faye    = require('faye')
+var faye    = faye = require('faye')
 var sys     = require('sys')
 var puts    = sys.puts
 var express = require('express')
@@ -29,8 +29,6 @@ use([
 
     'KiokuJS', // XXX need to include 'KiokuJS' for Joose.O.each override (move to Data.Visitor?)
     
-    
-
     'Syncler.Server',
     backendClass
 
@@ -60,6 +58,7 @@ use([
         backendParams       : params,
         
         baseURL             : baseURL.replace(/\/$/, ''),
+        port                : port,
         
         fayeClient          : bayeux.getClient(),
         
