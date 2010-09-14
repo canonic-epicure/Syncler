@@ -46,8 +46,6 @@ use([
         timeout     : 45
     })
     
-    bayeux.attach(app)
-    
     
     
     var params = eval('(' + backendParams + ')')
@@ -66,7 +64,10 @@ use([
     })
 
     
+    bayeux.attach(app)
+    
     app.listen(port)
+    
     
     puts('Syncler server started')
 })
