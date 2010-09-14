@@ -38,9 +38,18 @@ use([
     
     var app = express.createServer()
     
-    app.configure(function(){
-        app.use(express.bodyDecoder())
+    app.configure(function () {
+        app.use( express.bodyDecoder() )
     })
+    
+    
+    var bayeux = new faye.NodeAdapter({
+        mount       : fayeURL,
+        timeout     : 45
+    })
+    
+    bayeux.attach(app)
+    
     
     
     var params = eval('(' + backendParams + ')')
@@ -52,19 +61,13 @@ use([
         
         baseURL             : baseURL.replace(/\/$/, ''),
         
+        fayeClient          : bayeux.getClient(),
+        
         app                 : app
     })
-    
-    
-    var bayeux = new faye.NodeAdapter({
-        mount       : fayeURL,
-        timeout     : 45
-    })
-    
-    bayeux.attach(app)
+
     
     app.listen(port)
-
     
     puts('Syncler server started')
 })
