@@ -1,11 +1,5 @@
 require.paths.unshift('./lib')
 
-require('Task/Joose/Core')
-require('Task/JooseX/Attribute/Bootstrap')
-require('Task/JooseX/Namespace/Depended/NodeJS')
-require('Task/JooseX/CPS/All')
-require('Data/UUID')
-
 
 var http    = require('http')
 var faye    = require('faye')
@@ -27,9 +21,15 @@ var baseURL         = argv.baseURL || '/syncler'
 var port            = Number(argv.port) || 8080
 
 
+require('Task/Syncler/Prereq')
+require('Task/KiokuJS/Core')
+require('Task/Syncler/Core')
+
 use([
 
     'KiokuJS', // XXX need to include 'KiokuJS' for Joose.O.each override (move to Data.Visitor?)
+    
+    
 
     'Syncler.Server',
     backendClass

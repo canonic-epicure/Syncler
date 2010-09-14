@@ -36,13 +36,12 @@ COMPONENTS = {
         "jsan:Data.UUID",
         "jsan:Data.Visitor",
         "jsan:Task.JSON2.Bundle",
-        "jsan:Task.JooseX.Observable.Core",
-        
-        "=static/deps/faye/faye-browser.js"
+        "jsan:Task.JooseX.Observable.Core"
     ],
     
     
     "Test" : [
+        "=static/deps/faye/faye-browser.js",
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
         
