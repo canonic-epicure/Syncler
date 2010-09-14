@@ -13,18 +13,28 @@ var sys     = require('sys')
 var puts    = sys.puts
 var express = require('express')
 
+var argv            = require('optimist').argv
+var argvArr         = argv._
+
+
+
+var backendClass    = argv.backend || 'KiokuJS.Backend.CouchDB'
+var backendParams   = argv.backendParams || '{}'
+
+var fayeURL         = argv.fayeURL || '/faye'
+var baseURL         = argv.baseURL || '/syncler'
+
+var port            = Number(argv.port) || 8080
+
 
 use([
 
     'KiokuJS', // XXX need to include 'KiokuJS' for Joose.O.each override (move to Data.Visitor?)
 
     'Syncler.Server',
-    'KiokuJS.Backend.CouchDB'
+    backendClass
 
 ], function () {
-    
-    puts('Syncler server started')
-    
     
     var app = express.createServer()
     
@@ -33,26 +43,30 @@ use([
     })
     
     
+    var params = eval('(' + backendParams + ')')
     
     var server = new Syncler.Server({
-        backendClass        : KiokuJS.Backend.CouchDB,
+        backendClass        : eval('(' + backendClass + ')'),
         
-        backendParams       : {
-        },
+        backendParams       : params,
+        
+        baseURL             : baseURL.replace(/\/$/, ''),
         
         app                 : app
     })
     
     
     var bayeux = new faye.NodeAdapter({
-        mount       : '/faye',
+        mount       : fayeURL,
         timeout     : 45
     })
     
     bayeux.attach(app)
     
+    app.listen(port)
+
     
-    app.listen(8080)    
+    puts('Syncler server started')
 })
 
 

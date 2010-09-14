@@ -10,6 +10,8 @@ StartTest(function(t) {
     t.ok(Syncler, "Syncler is here")
     
 
+    var portCounter     = 9000
+    var request         = HTTP.Request.Provider.request
     
     new KiokuJS.Test({
         t       : t,
@@ -18,13 +20,26 @@ StartTest(function(t) {
         
         connect : function () {
             
-            var backend = new Syncler({
-                baseURL     : 'http://local/8080/',
-                dbURL       : 'http://local/5984/kiokujs-backend-couchdb-' + new Date().getTime()
-            })
-
+            var dbURL   = 'http://local/5984/kiokujs-backend-couchdb-' + new Date().getTime()
+            var port    = portCounter++
             
-            backend.createDB().andThen(function () {
+            request({ 
+                
+                headers : { 'content-type' : 'application/json' },
+                
+                url     : 'http://local/8080/start_test', 
+                method  : 'PUT',
+                
+                data    : JSON2.stringify({ dbURL : dbURL, port : port })
+                
+            }).andThen(function (res) {
+                
+                var backend = new Syncler({
+                    baseURL     : 'http://local/' + port,
+                    dbURL       : dbURL
+                })
+                
+                backend.__dbURL__ = dbURL
                 
                 this.CONTINUE(KiokuJS.connect({
                     backend : backend
@@ -33,7 +48,17 @@ StartTest(function(t) {
         },
         
         cleanup : function (handle, t) {
-            handle.backend.deleteDB().now()
+            
+            request({ 
+                
+                headers : { 'content-type' : 'application/json' },
+                
+                url     : 'http://local/8080/finish_test', 
+                method  : 'PUT',
+                
+                data    : JSON2.stringify({ dbURL : handle.backend.__dbURL__ })
+                
+            }).now()
         }
         
     }).runAllFixtures().andThen(function () {
@@ -43,3 +68,4 @@ StartTest(function(t) {
         t.done()
     })
 })    
+

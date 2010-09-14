@@ -13,19 +13,14 @@ var INC = (isNode ? require.paths : []).concat('../lib', '/jsan')
 
 
 Harness.configure({
-    title     : 'Syncler Test Suite',
+    title       : 'Syncler Test Suite',
     
-    preload : Joose.is_NodeJS ? [
-        "Task.Syncler.NodeJSPrereq",
+    runCore     : 'sequential',
+    
+    preload : [
+        "Task.Syncler.Prereq",
         {
-            text : "JooseX.Namespace.Depended.Manager.my.INC = " + JSON.stringify(INC)
-        },
-        "Task.Syncler.Test"
-        
-    ] : [
-        "Task.Syncler.WebPrereq",
-        {
-            text : "JooseX.Namespace.Depended.Manager.my.INC = " + Ext.encode(Harness.absolutizeINC(INC))
+            text : "JooseX.Namespace.Depended.Manager.my.INC = " + Joose.is_NodeJS ? JSON.stringify(INC) : Ext.encode(Harness.absolutizeINC(INC))
         },
         "Task.Syncler.Test"
     ]
@@ -34,7 +29,7 @@ Harness.configure({
 
 Harness.start(
     '010_sanity.t.js',
-    //'020_fixtures_kioku.t.js',
-    //'030_fixture_basic.t.js',
+    '020_fixtures_kioku.t.js',
+    '030_fixture_basic.t.js',
     '040_fixture_transfer.t.js'
 )

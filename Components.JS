@@ -26,32 +26,13 @@ COMPONENTS = {
     ],
     
     
-    "WebPrereq" : [
-        "jsan:Task.Joose.Core",
-        "jsan:Task.JooseX.Attribute.Bootstrap",
-        
-        "jsan:JooseX.SimpleRequest",
-        "jsan:Task.JooseX.Namespace.Depended.Web",
-        
-        "jsan:Task.JooseX.CPS.All",
-        
-        "jsan:Task.HTTP.Request.Provider.Web"
-    ],
-    
-    
-    "NodeJSPrereq" : [
-        "jsan:Task.Joose.Core",
-        "jsan:Task.JooseX.Attribute.Bootstrap",
-        
-        "jsan:Task.JooseX.Namespace.Depended.NodeJS",
-        
-        "jsan:Task.JooseX.CPS.All",
-        
-        "jsan:Task.HTTP.Request.Provider.NodeJS"
-    ],
-    
-    
     "Prereq" : [
+        "jsan:Task.Joose.Core",
+        "jsan:Task.JooseX.Attribute.Bootstrap",
+        "jsan:Task.JooseX.Namespace.Depended.Auto",
+        "jsan:Task.JooseX.CPS.All",
+        "jsan:Task.HTTP.Request.Provider.Auto",
+        
         "jsan:Data.UUID",
         "jsan:Data.Visitor",
         "jsan:Task.JSON2.Bundle",
@@ -62,8 +43,6 @@ COMPONENTS = {
     
     
     "Test" : [
-        "+Prereq",
-        
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
         
