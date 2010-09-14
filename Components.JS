@@ -62,10 +62,11 @@ COMPONENTS = {
     
     
     "Test" : [
+        "+Prereq",
+        
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
         
-        "+Prereq",
         "+Core",
         
         "Syncler.Test.Fixture.Basic",
