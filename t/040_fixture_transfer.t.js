@@ -10,7 +10,7 @@ StartTest(function(t) {
     t.ok(Syncler, "Syncler is here")
     
 
-    var portCounter     = 9000
+    var portCounter     = t.harness.currentPort = t.harness.currentPort || 9000
     var request         = HTTP.Request.Provider.request
     
     new KiokuJS.Test({
@@ -21,7 +21,7 @@ StartTest(function(t) {
         connect : function () {
             
             var dbURL   = 'http://local/5984/kiokujs-backend-couchdb-' + new Date().getTime()
-            var port    = portCounter++
+            var port    = t.harness.currentPort++
             
             request({ 
                 
@@ -35,8 +35,7 @@ StartTest(function(t) {
             }).andThen(function (res) {
                 
                 var backend = new Syncler({
-                    baseURL     : 'http://local/' + port,
-                    dbURL       : dbURL
+                    baseURL     : 'http://local/' + port
                 })
                 
                 backend.__dbURL__ = dbURL
