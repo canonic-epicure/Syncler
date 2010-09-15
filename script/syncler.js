@@ -73,3 +73,6 @@ use([
 })
 
 
+process.on('uncaughtException', function (err) {
+    console.log('exception: ' + err)
+})
