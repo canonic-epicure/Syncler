@@ -31,5 +31,6 @@ Harness.start(
     '010_sanity.t.js',
     '020_fixtures_kioku.t.js',
     '030_fixture_basic.t.js',
-    '040_fixture_transfer.t.js'
+    '040_fixture_transfer.t.js',
+    '050_fixture_new_element.t.js'
 )

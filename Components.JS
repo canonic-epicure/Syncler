@@ -49,6 +49,7 @@ COMPONENTS = {
         
         "Syncler.Test.Class",
         "Syncler.Test.Fixture.Basic",
-        "Syncler.Test.Fixture.Transfer"
+        "Syncler.Test.Fixture.Transfer",
+        "Syncler.Test.Fixture.NewElement"
     ]
 }
