@@ -5,6 +5,7 @@ var http    = require('http')
 var sys     = require('sys')
 var puts    = sys.puts
 var express = require('express')
+faye        = require('faye') // make it global to skip loading as a dependency of Syncler
 
 var argv            = require('optimist').argv
 

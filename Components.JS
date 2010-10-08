@@ -18,9 +18,9 @@ COMPONENTS = {
         "Syncler.Vero.Attribute",
         "Syncler.Vero.Meta",
         
-        
-        "Syncler.Node",
         "Syncler.Channel",
+        
+        "Syncler.PubSub.Faye",
         
         "Syncler"
     ],

@@ -20,7 +20,7 @@ Harness.configure({
     preload : [
         "Task.Syncler.Prereq",
         {
-            text : "JooseX.Namespace.Depended.Manager.my.INC = " + Joose.is_NodeJS ? JSON.stringify(INC) : Ext.encode(Harness.absolutizeINC(INC))
+            text : "JooseX.Namespace.Depended.Manager.my.INC = " + Harness.prepareINC(INC)
         },
         "Task.Syncler.Test"
     ]
