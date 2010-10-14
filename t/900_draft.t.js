@@ -2,7 +2,7 @@
 
 var handle = new KiokuJS.Backend.CouchDB({
     
-    trait       : Syncler.Client,
+    traits      : [ Syncler.Client, KiokuJS.Backend.Batch ],
     
     baseURL     : '/db',
     fayeURL     : '/faye'
