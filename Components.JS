@@ -47,7 +47,7 @@ COMPONENTS = {
         
         "+Core",
         
-        "Syncler.Test.Class",
+        "Syncler.Test.TestClass",
         "Syncler.Test.Fixture.Basic",
         "Syncler.Test.Fixture.Transfer",
         "Syncler.Test.Fixture.NewElement"
