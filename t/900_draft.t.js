@@ -39,7 +39,7 @@ var handle = new KiokuJS.Backend.CouchDB({
     
     dbURL       : '/5984/somebase',
     
-    fayeURL     : '/faye'
+    fayeClient  : bayex.getClient()
 })
 
 
