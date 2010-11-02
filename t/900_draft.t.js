@@ -1,4 +1,4 @@
-// client (browser)
+// client
 
 var handle = new KiokuJS.Backend.CouchDB({
     
@@ -8,6 +8,7 @@ var handle = new KiokuJS.Backend.CouchDB({
     fayeClient  : new Faye.Client('/faye')
 })
 
+// existing topic
 
 handle.setupChannel({ topicID : 'ABCD' }).andThen(function (channel) {
     
@@ -16,7 +17,7 @@ handle.setupChannel({ topicID : 'ABCD' }).andThen(function (channel) {
 })
 
 
-
+// new topic
 
 var topic = new Topic({ channel : handle.newChannel() })
 
@@ -29,8 +30,7 @@ handle.setupChannel({ topic : topic }).andThen(function (channel) {
 
 
 
-
-// server (node)
+// server
 
 
 var handle = new KiokuJS.Backend.CouchDB({
