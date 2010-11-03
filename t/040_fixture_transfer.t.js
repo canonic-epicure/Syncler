@@ -42,6 +42,8 @@ StartTest(function(t) {
                 
             }).andThen(function (res) {
                 
+                alert('Open debug inspector')
+                
                 var backend = new KiokuJS.Backend.CouchDB({
                     trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
                     
