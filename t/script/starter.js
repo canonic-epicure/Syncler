@@ -33,6 +33,8 @@ app.put('/start_test', function (req, res) {
         paramsAsArr.push('--' + name + '=' + JSON.stringify(value))
     })
     
+    paramsAsArr.unshift('--debug')
+    
     var child = tests[ port ] = spawn('node', [ 'script/syncler_server.js' ].concat(paramsAsArr))
         
     
