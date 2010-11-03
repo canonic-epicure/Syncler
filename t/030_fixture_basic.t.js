@@ -6,59 +6,75 @@ StartTest(function(t) {
     t.diag('Sanity')
     
     t.ok(KiokuJS.Test, "KiokuJS.Test is here")
+    t.ok(KiokuJS.Backend.Batch, "KiokuJS.Backend.Batch is here")
     t.ok(KiokuJS.Backend.CouchDB, "KiokuJS.Backend.CouchDB is here")
-    t.ok(Syncler, "Syncler is here")
+    t.ok(Syncler.Client, "Syncler.Client is here")
     
-
-    var portCounter     = t.harness.currentPort = t.harness.currentPort || 9000
-    var request         = HTTP.Request.Provider.request
+    
+    t.harness.currentPort   = t.harness.currentPort || 9000
     
     new KiokuJS.Test({
         t       : t,
         
         fixtures    : [ '=Syncler.Test.Fixture.Basic' ],
         
+        
         connect : function () {
             
             var dbURL   = 'http://local/5984/kiokujs-backend-couchdb-' + new Date().getTime()
             var port    = t.harness.currentPort++
             
-            request({ 
+            HTTP.Request.Provider.getRequest({ 
                 
                 headers : { 'content-type' : 'application/json' },
                 
-                url     : 'http://local/8080/start_test', 
+                url     : '/8080/start_test', 
                 method  : 'PUT',
                 
-                data    : JSON2.stringify({ dbURL : dbURL, port : port })
+                data    : JSON2.stringify({ 
+                    port            : port,
+                    
+                    fayeURL         : '/faye',
+                    dbURL           : dbURL,
+                    
+                    backendClass    : 'KiokuJS.Backend.CouchDB'
+                })
                 
             }).andThen(function (res) {
                 
-                var backend = new Syncler({
+                var backend = new KiokuJS.Backend.CouchDB({
+                    trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
+                    
                     baseURL     : 'http://local/' + port,
-                    dbURL       : dbURL
+                    dbURL       : dbURL,
+                    
+                    fayeClient  : new Faye.Client('/' + port + '/faye')
                 })
                 
-                backend.__dbURL__ = dbURL
+                backend.__port__ = port
                 
-                this.CONTINUE(KiokuJS.connect({
-                    backend : backend
-                }))
+                backend.__createDB().andThen(function () {
+                    
+                    this.CONTINUE(backend)
+                })
             })
         },
         
-        cleanup : function (handle, t) {
+        cleanup : function (backend, t) {
             
-            request({ 
+            HTTP.Request.Provider.getRequest({ 
                 
                 headers : { 'content-type' : 'application/json' },
                 
-                url     : 'http://local/8080/finish_test', 
+                url     : '/8080/finish_test', 
                 method  : 'PUT',
                 
-                data    : JSON2.stringify({ dbURL : handle.backend.__dbURL__ })
+                data    : JSON2.stringify({ 
+                    port : backend.__port__ 
+                })
+            })
                 
-            }).now()
+            backend.__deleteDB().now()
         }
         
     }).runAllFixtures().andThen(function () {
@@ -67,5 +83,4 @@ StartTest(function(t) {
         
         t.done()
     })
-})    
-
+})
