@@ -11,7 +11,7 @@ var argv            = require('optimist').argv
 
 var backendClass    = argv.backendClass     && JSON.parse(argv.backendClass)     || 'KiokuJS.Backend.Hash'
 var backendParams   = argv.backendParams    && JSON.parse(argv.backendParams)    || {}
-var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)          || '/syncler'
+var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)          || '/'
 var fayeURL         = argv.fayeURL          && JSON.parse(argv.fayeURL)          || '/faye'
 
 

@@ -41,7 +41,9 @@ StartTest(function(t) {
                 var backend = new KiokuJS.Backend.Hash({
                     trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
                     
-                    baseURL : '/' + port
+                    baseURL : '/' + port,
+                    
+                    fayeClient  : {}
                 })
                 
                 backend.__port__ = port
