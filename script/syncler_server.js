@@ -57,7 +57,7 @@ use([
     
     puts('Syncler.ServerApp server started')
     puts('Backend class: : [' + backendClass + ']')
-    puts('Backend configuration parameters: [' + JSON.stringify(backendParams) + ']')
+    puts('Backend configuration parameters: ' + JSON.stringify(backendParams))
     puts('BaseURL: [' + baseURL + ']')
     puts('FayeURL: [' + fayeURL + ']')
     puts('Port: [' + port + ']')

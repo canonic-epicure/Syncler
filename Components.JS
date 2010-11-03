@@ -19,10 +19,13 @@ COMPONENTS = {
         "Syncler.Vero.Meta",
         
         "Syncler.Channel",
+        "Syncler.Channel.Client",
+        "Syncler.Channel.Server",
         
         "Syncler.PubSub.Faye",
         
-        "Syncler"
+        "Syncler",
+        "Syncler.Client"
     ],
     
     
@@ -36,7 +39,9 @@ COMPONENTS = {
         "jsan:Data.UUID",
         "jsan:Data.Visitor",
         "jsan:Task.JSON2.Bundle",
-        "jsan:Task.JooseX.Observable.Core"
+        "jsan:Task.JooseX.Observable.Core",
+        
+        "jsan:KiokuJS.Backend.Role.HTTP"
     ],
     
     
@@ -44,6 +49,7 @@ COMPONENTS = {
         "=static/deps/faye/faye-browser.js",
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
+        "jsan:KiokuJS.Backend.Batch",
         
         "+Core",
         
