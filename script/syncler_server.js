@@ -23,7 +23,7 @@ require('Task/Joose/NodeJS')
 
 use([
 
-    'Syncler.Server',
+    'Syncler.ServerApp',
     backendClass
 
 ], function () {
@@ -35,9 +35,9 @@ use([
     })
     
     
-    puts('Starting Syncler.Server')
+    puts('Starting Syncler.ServerApp')
     
-    var server = new Syncler.Server({
+    var server = new Syncler.ServerApp({
         backendClass        : eval('(' + backendClass + ')'),
         
         backendParams       : backendParams,
@@ -55,7 +55,7 @@ use([
     
     app.listen(port)
     
-    puts('Syncler.Server server started')
+    puts('Syncler.ServerApp server started')
     puts('Backend class: : [' + backendClass + ']')
     puts('Backend configuration parameters: [' + JSON.stringify(backendParams) + ']')
     puts('BaseURL: [' + baseURL + ']')
