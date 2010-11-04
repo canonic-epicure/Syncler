@@ -13,7 +13,7 @@ StartTest(function(t) {
     
     t.harness.currentPort   = t.harness.currentPort || 9000
     
-    var debugging = true
+    var debugging = false
     
     new KiokuJS.Test({
         t       : t,
