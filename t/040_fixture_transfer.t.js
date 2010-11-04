@@ -80,9 +80,9 @@ StartTest(function(t) {
                 data    : JSON2.stringify({ 
                     port : backend.__port__ 
                 })
-            })
+            }).now()
                 
-            backend.__deleteDB().now()
+//            backend.__deleteDB().now()
         }
         
     }).runAllFixtures().andThen(function () {
