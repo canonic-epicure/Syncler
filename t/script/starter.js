@@ -28,14 +28,16 @@ app.put('/start_test', function (req, res) {
     
     var paramsAsArr = []
     
+    var debugging = params.debugging
+    delete params.debugging
+    
     Joose.O.each(params, function (value, name) {
         
         paramsAsArr.push('--' + name + '=' + JSON.stringify(value))
     })
     
-//    paramsAsArr.unshift('--debug')
     
-    var child = tests[ port ] = spawn('node', [ '--debug', 'script/syncler_server.js' ].concat(paramsAsArr))
+    var child = tests[ port ] = spawn('node', [].concat(debugging ? '--debug' : [], 'script/syncler_server.js', paramsAsArr))
         
     
     var initialOutput = true

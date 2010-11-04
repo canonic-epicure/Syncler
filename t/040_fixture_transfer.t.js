@@ -13,6 +13,8 @@ StartTest(function(t) {
     
     t.harness.currentPort   = t.harness.currentPort || 9000
     
+    var debugging = true
+    
     new KiokuJS.Test({
         t       : t,
         
@@ -37,12 +39,14 @@ StartTest(function(t) {
                     fayeURL         : '/faye',
                     dbURL           : dbURL,
                     
+                    debugging       : debugging,
+                    
                     backendClass    : 'KiokuJS.Backend.CouchDB'
                 })
                 
             }).andThen(function (res) {
                 
-                alert('Open debug inspector')
+                if (debugging) alert('Open debug inspector')
                 
                 var backend = new KiokuJS.Backend.CouchDB({
                     trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
