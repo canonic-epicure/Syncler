@@ -8,8 +8,6 @@ COMPONENTS = {
         "Syncler.Vero.Mutation.Delete",
         "Syncler.Vero.Mutation.Update",
         
-        "Syncler.Vero.Mutation.Packet",
-        
         "Syncler.Vero",
         
         "Syncler.Vero.Role",
