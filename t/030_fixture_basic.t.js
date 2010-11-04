@@ -40,7 +40,7 @@ StartTest(function(t) {
                     backendClass    : 'KiokuJS.Backend.CouchDB'
                 })
                 
-            }).andThen(function (res) {
+            }).andThen(function () {
                 
                 var backend = new KiokuJS.Backend.CouchDB({
                     trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],

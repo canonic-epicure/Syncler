@@ -37,14 +37,16 @@ StartTest(function(t) {
                     port            : port,
                     
                     fayeURL         : '/faye',
-                    dbURL           : dbURL,
                     
                     debugging       : debugging,
                     
-                    backendClass    : 'KiokuJS.Backend.CouchDB'
+                    backendClass    : 'KiokuJS.Backend.CouchDB',
+                    backendParams   : {
+                        dbURL           : dbURL
+                    }
                 })
                 
-            }).andThen(function (res) {
+            }).andThen(function () {
                 
                 if (debugging) alert('Open debug inspector')
                 
