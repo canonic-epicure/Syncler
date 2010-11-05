@@ -13,7 +13,8 @@ StartTest(function(t) {
     
     t.harness.currentPort   = t.harness.currentPort || 9000
     
-    var debugging = false
+    var debugging   = false
+    var keepDB      = false
     
     new KiokuJS.Test({
         t       : t,
@@ -81,7 +82,10 @@ StartTest(function(t) {
                 })
             })
                 
-            backend.__deleteDB().now()
+            if (keepDB)
+                this.NOW()
+            else
+                backend.__deleteDB().now()
         }
         
     }).runAllFixtures().andThen(function () {
