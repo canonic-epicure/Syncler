@@ -18,7 +18,8 @@ StartTest(function(t) {
     new KiokuJS.Test({
         t       : t,
         
-        fixtures    : [ '=Syncler.Test.Fixture.Transfer' ],
+        fixtures    : [ '=Syncler.Test.Fixture.CreateRaceCondition' ],
+        
         
         connect : function () {
             
