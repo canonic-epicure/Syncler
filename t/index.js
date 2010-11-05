@@ -15,7 +15,7 @@ var INC = (isNode ? require.paths : []).concat('../lib', '/jsan')
 Harness.configure({
     title       : 'Syncler Test Suite',
     
-//    runCore     : 'sequential',
+    runCore     : 'sequential',
     
     preload : [
         "Task.Syncler.Prereq",
@@ -32,5 +32,6 @@ Harness.start(
     '020_fixtures_kioku.t.js',
     '030_fixture_basic.t.js',
     '040_fixture_transfer.t.js',
-    '050_fixture_new_element.t.js'
+    '050_fixture_new_element.t.js',
+    '060_fixture_stressload.t.js'
 )

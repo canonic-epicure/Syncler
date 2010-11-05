@@ -52,6 +52,7 @@ COMPONENTS = {
         "+Core",
         
         "Syncler.Test.TestClass",
+        "Syncler.Test.Actor",
         "Syncler.Test.Fixture.Basic",
         "Syncler.Test.Fixture.Transfer",
         "Syncler.Test.Fixture.NewElement"
