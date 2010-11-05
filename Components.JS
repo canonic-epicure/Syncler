@@ -55,6 +55,7 @@ COMPONENTS = {
         "Syncler.Test.Actor",
         "Syncler.Test.Fixture.Basic",
         "Syncler.Test.Fixture.Transfer",
-        "Syncler.Test.Fixture.NewElement"
+        "Syncler.Test.Fixture.NewElement",
+        "Syncler.Test.Fixture.StressLoad"
     ]
 }
