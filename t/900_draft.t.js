@@ -11,12 +11,12 @@ var handle = new KiokuJS.Backend.CouchDB({
 
 // new topic
 
-var topic = new Topic({ channel : handle.newChannel() })
+var topic = new Topic({ replica : handle.newReplica() })
 
 
-handle.setupChannel({ topic : topic }).andThen(function (channel) {
+handle.setupReplica({ topic : topic }).andThen(function (replica) {
     
-    var topic = channel.getTopic()
+    var topic = replica.getTopic()
 
     topic.setAttr('yo')
 })
@@ -29,11 +29,11 @@ handle.setupChannel({ topic : topic }).andThen(function (channel) {
 
 // existing topic
 
-handle.setupChannel({ topicID : 'ABCD' }).andThen(function (channel) {
+handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
     
-    var topic = channel.getTopic()
+    var topic = replica.getTopic()
     
-    channel.on('mutate', function () {
+    replica.on('mutate', function () {
     
     })
 
@@ -56,8 +56,8 @@ var handle = new KiokuJS.Backend.CouchDB({
 })
 
 
-handle.setupChannel({ topicID : 'ABCD' }).andThen(function (channel) {
+handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
     
-    var topic = channel.getTopic()
+    var topic = replica.getTopic()
 
 })

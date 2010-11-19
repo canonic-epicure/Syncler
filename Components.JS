@@ -44,7 +44,6 @@ COMPONENTS = {
     
     
     "Test" : [
-        "=static/deps/faye/faye-browser.js",
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
         "jsan:KiokuJS.Backend.Batch",

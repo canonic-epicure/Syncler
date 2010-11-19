@@ -87,7 +87,7 @@ GETTING HELP
 
 This extension is supported via github issues tracker: <http://github.com/SamuraiJack/Syncler/issues>
 
-For general Joose questions you can also visit [#joose](http://webchat.freenode.net/?randomnick=1&channels=joose&prompt=1) 
+For general Joose questions you can also visit [#joose](http://webchat.freenode.net/?randomnick=1&replicas=joose&prompt=1) 
 on irc.freenode.org or mailing list at: <http://groups.google.com/group/joose-js>
  
 
