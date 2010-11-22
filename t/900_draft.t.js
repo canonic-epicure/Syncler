@@ -4,17 +4,18 @@ var handle = new KiokuJS.Backend.CouchDB({
     
     traits      : [ Syncler.Client, KiokuJS.Backend.Batch ],
     
-    baseURL     : '/db',
-    fayeClient  : new Faye.Client('/faye')
+    dbURL       : '/5984/db',
+    baseURL     : '/8080'
 })
 
 
 // new topic
 
-var topic = new Topic({ replica : handle.newReplica() })
+var replica     = handle.newReplica()
 
+var topic = new Topic({ replica : replica })
 
-handle.setupReplica({ topic : topic }).andThen(function (replica) {
+replica.setup(topic).andThen(function (replica) {
     
     var topic = replica.getTopic()
 
@@ -29,7 +30,7 @@ handle.setupReplica({ topic : topic }).andThen(function (replica) {
 
 // existing topic
 
-handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
+handle.newReplica().setup('ABC-123').andThen(function (replica) {
     
     var topic = replica.getTopic()
     
@@ -50,9 +51,9 @@ var handle = new KiokuJS.Backend.CouchDB({
     
     trait       : Syncler.Server,
     
-    dbURL       : '/5984/somebase',
+    parallelMax : 10,
     
-    fayeClient  : bayex.getClient()
+    dbURL       : '/5984/somebase'
 })
 
 
@@ -61,3 +62,26 @@ handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
     var topic = replica.getTopic()
 
 })
+
+
+
+
+line.write(function () {
+    
+    this.setX1(x1)
+    this.setY1(y1)
+})
+
+
+
+line.write(Syncler.Operation.Auto(function () {
+    
+    line.setX1(x1)
+    line.setY1(y1)
+})
+
+
+line.setX1(x1)
+line.setY1(y1)
+
+line.commit()
