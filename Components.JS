@@ -2,27 +2,27 @@ COMPONENTS = {
     // a comment
     
     "Core" : [
-        "Syncler.Vero.Mutation",
-        
-        "Syncler.Vero.Mutation.Create",
-        "Syncler.Vero.Mutation.Delete",
-        "Syncler.Vero.Mutation.Update",
-        
-        "Syncler.Vero",
-        
-        "Syncler.Vero.Role",
-        "Syncler.Vero.Role.Topic",
-        
-        "Syncler.Vero.Attribute",
-        "Syncler.Vero.Meta",
-        
-        "Syncler.Channel",
-        "Syncler.Channel.Client",
-        "Syncler.Channel.Server",
-        
-        "Syncler.PubSub.Faye",
-        
-        "Syncler",
+//        "Syncler.Vero.Mutation",
+//        
+//        "Syncler.Vero.Mutation.Create",
+//        "Syncler.Vero.Mutation.Delete",
+//        "Syncler.Vero.Mutation.Update",
+//        
+//        "Syncler.Vero",
+//        
+//        "Syncler.Vero.Role",
+//        "Syncler.Vero.Role.Topic",
+//        
+//        "Syncler.Vero.Attribute",
+//        "Syncler.Vero.Meta",
+//        
+//        "Syncler.Replica",
+//        "Syncler.Replica.Client",
+//        "Syncler.Replica.Server",
+//        
+////        "Syncler.PubSub.Faye",
+//        
+//        "Syncler",
         "Syncler.Client"
     ],
     
