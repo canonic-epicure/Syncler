@@ -66,15 +66,15 @@ handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
 
 
 
-line.write(function () {
+replica.write(function () {
     
-    this.setX1(x1)
-    this.setY1(y1)
+    line.setX1(x1)
+    line.setY1(y1)
 })
 
 
 
-line.write(Syncler.Operation.Auto(function () {
+line.replica.write(Syncler.Operation.Auto(function () {
     
     line.setX1(x1)
     line.setY1(y1)
