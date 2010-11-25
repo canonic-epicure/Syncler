@@ -66,7 +66,7 @@ handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
 
 
 
-replica.write(function () {
+line.write(function () {
     
     line.setX1(x1)
     line.setY1(y1)
