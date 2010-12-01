@@ -2,27 +2,32 @@ COMPONENTS = {
     // a comment
     
     "Core" : [
-//        "Syncler.Vero.Mutation",
-//        
-//        "Syncler.Vero.Mutation.Create",
+        "Syncler.Mutation",
+        
+        "Syncler.Mutation.Class.Create",
 //        "Syncler.Vero.Mutation.Delete",
-//        "Syncler.Vero.Mutation.Update",
-//        
-//        "Syncler.Vero",
-//        
-//        "Syncler.Vero.Role",
-//        "Syncler.Vero.Role.Topic",
-//        
-//        "Syncler.Vero.Attribute",
-//        "Syncler.Vero.Meta",
-//        
-//        "Syncler.Replica",
-//        "Syncler.Replica.Client",
+        "Syncler.Mutation.Class.Update",
+        
+        "Syncler.Mutation.Array.Push",
+        "Syncler.Mutation.Array.Set",
+        
+        "Syncler.Operation",
+        "Syncler.Operation.Void",
+        "Syncler.Operation.Auto",
+        
+        "Syncler.Observable",
+        
+        "Syncler.Object.Attribute",
+        "Syncler.Object.Meta",
+        
+        "Syncler.Object",
+        "Syncler.Topic",
+        
+        "Syncler.Replica",
+        "Syncler.Replica.Client",
 //        "Syncler.Replica.Server",
-//        
-////        "Syncler.PubSub.Faye",
-//        
-//        "Syncler",
+        
+        "Syncler",
         "Syncler.Client"
     ],
     
@@ -39,6 +44,8 @@ COMPONENTS = {
         "jsan:Task.JSON2.Bundle",
         "jsan:Task.JooseX.Observable.Core",
         
+        "jsan:JooseX.Class.SimpleConstructor",
+        
         "jsan:KiokuJS.Backend.Role.HTTP"
     ],
     
@@ -48,13 +55,13 @@ COMPONENTS = {
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
         "jsan:KiokuJS.Backend.Batch",
         
-        "+Core",
-        
-        "Syncler.Test.TestClass",
-        "Syncler.Test.Actor",
-        "Syncler.Test.Fixture.Basic",
-        "Syncler.Test.Fixture.Transfer",
-        "Syncler.Test.Fixture.NewElement",
-        "Syncler.Test.Fixture.StressLoad"
+        "+Core"
+//        ,
+//        "Syncler.Test.TestClass",
+//        "Syncler.Test.Actor",
+//        "Syncler.Test.Fixture.Basic",
+//        "Syncler.Test.Fixture.Transfer",
+//        "Syncler.Test.Fixture.NewElement",
+//        "Syncler.Test.Fixture.StressLoad"
     ]
 }

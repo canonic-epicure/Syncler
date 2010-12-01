@@ -16,11 +16,12 @@ Harness.configure({
     title       : 'Syncler Test Suite',
     
     runCore     : 'sequential',
+    keepResults : true,
     
     preload : [
         "Task.Syncler.Prereq",
         {
-            text : "JooseX.Namespace.Depended.Manager.my.INC = " + Harness.prepareINC(INC)
+            text : "use.paths = " + Harness.prepareINC(INC)
         },
         "Task.Syncler.Test"
     ]
@@ -29,8 +30,10 @@ Harness.configure({
 
 Harness.start(
     '010_sanity.t.js',
-    '020_fixtures_kioku.t.js',
-    '030_fixture_basic.t.js'
+    '011_replica.t.js'
+    
+//    '020_fixtures_kioku.t.js',
+//    '030_fixture_basic.t.js'
 //    ,
 //    '040_fixture_transfer.t.js',
 //    '050_fixture_new_element.t.js',
