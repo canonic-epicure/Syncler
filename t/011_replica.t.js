@@ -71,7 +71,7 @@ StartTest(function(t) {
         //======================================================================================================================================================================================================================================================
         t.diag('Mutations internals')
         
-        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica and 3 mutations)')
+        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica and 1 topic and 2 composite attributes)')
         
         
         var topicID = replica.objectToId(topic)
@@ -93,11 +93,11 @@ StartTest(function(t) {
         //======================================================================================================================================================================================================================================================
         t.diag('Apply operation back')
         
-//        op.apply(replica)
-//        
-////        debugger
-//        
-//        t.ok(replica.getCount() == 3, '3 objects in scope')
+        op.apply(replica)
+        
+//        debugger
+        
+        t.ok(replica.getCount() == 4, '4 objects in scope')
         
         
         

@@ -5,10 +5,6 @@ Role('Syncler.Operation', {
     requires : [ 'apply', 'unapply', 'checkPrecondition', 'merge', 'run', 'commit' ],
     
     has : {
-        clientID        : null,
-        acceptNum       : null,
-        
-        mergeResultOf   : null
     }
 })
 

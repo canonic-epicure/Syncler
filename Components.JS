@@ -11,10 +11,6 @@ COMPONENTS = {
         "Syncler.Mutation.Array.Push",
         "Syncler.Mutation.Array.Set",
         
-        "Syncler.Operation",
-        "Syncler.Operation.Void",
-        "Syncler.Operation.Auto",
-        
         "Syncler.Observable",
         
         "Syncler.Object.Attribute",

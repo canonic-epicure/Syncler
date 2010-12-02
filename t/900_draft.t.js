@@ -66,11 +66,38 @@ handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
 
 
 
-line.write(function () {
+line.write({
+    type        : 'Syncler.Mutation.Attribute',
     
-    line.setX1(x1)
-    line.setY1(y1)
+    name        : 'x1',
+    value       : 10,
+    
+    consisteny  : 'firstwin'
 })
+
+line.setX1(10)
+
+
+line.write({
+    type        : 'Syncler.Mutation.Attribute.Several',
+    
+    consisteny  : 'firstwin',
+    
+    attributes  : [
+        {
+            object      : line,
+            name        : 'x1',
+            value       : 10
+        },
+        {
+            object      : line,
+            name        : 'y1',
+            value       : 10
+        }
+    ]
+})
+
+line.setX1(10)
 
 
 
@@ -81,7 +108,9 @@ line.replica.write(Syncler.Operation.Auto(function () {
 })
 
 
-line.setX1(x1)
-line.setY1(y1)
+
+
+
+line.setY1(y1, 'lastwin')
 
 line.commit()
