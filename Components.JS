@@ -6,7 +6,7 @@ COMPONENTS = {
         
         "Syncler.Mutation.Class.Create",
 //        "Syncler.Vero.Mutation.Delete",
-        "Syncler.Mutation.Class.Update",
+        "Syncler.Mutation.Class.Attribute",
         
         "Syncler.Mutation.Array.Push",
         "Syncler.Mutation.Array.Set",

@@ -66,8 +66,13 @@ handle.setupReplica({ topicID : 'ABCD' }).andThen(function (replica) {
 
 
 
-line.write({
-    type        : 'Syncler.Mutation.Attribute',
+
+
+
+replica.write({
+    type        : 'Syncler.Mutation.Class.Attribute',
+    
+    object      : line,
     
     name        : 'x1',
     value       : 10,
@@ -78,39 +83,75 @@ line.write({
 line.setX1(10)
 
 
+
+
+
+
+
+
+
+
+
+
+
 line.write({
-    type        : 'Syncler.Mutation.Attribute.Several',
+    type        : 'Syncler.Mutation.Class.Attribute',
     
-    consisteny  : 'firstwin',
+    name        : 'x1',
+    value       : 10,
     
-    attributes  : [
-        {
-            object      : line,
-            name        : 'x1',
-            value       : 10
-        },
-        {
-            object      : line,
-            name        : 'y1',
-            value       : 10
-        }
-    ]
+    consisteny  : 'firstwin'
 })
 
 line.setX1(10)
 
 
 
-line.replica.write(Syncler.Operation.Auto(function () {
-    
-    line.setX1(x1)
-    line.setY1(y1)
-})
+
+line.set(
+    {
+        name        : 'x1',
+        value       : 10
+    },
+    {
+        name        : 'y1',
+        value       : 15
+    }
+)
+
+
+line.setX1(10) && line.setY1(10)
+
+line.set('x1', 10, 'y1', 15)
 
 
 
 
 
-line.setY1(y1, 'lastwin')
 
-line.commit()
+
+replica.write(
+    {
+        type        : 'Syncler.Mutation.Attribute',
+        
+        object      : line,
+        
+        name        : 'x1',
+        value       : 10,
+        
+        consisteny  : 'firstwin'
+    }
+)
+
+// or
+
+line.write(
+    {
+        type        : 'Syncler.Mutation.Attribute',
+        
+        name        : 'x1',
+        value       : 10,
+        
+        consisteny  : 'firstwin'
+    }
+)
