@@ -22,10 +22,15 @@ COMPONENTS = {
         
         "Syncler.Object",
         "Syncler.Topic",
+        "Syncler.Topic.UUID",
         
         "Syncler.Replica",
         "Syncler.Replica.Client",
 //        "Syncler.Replica.Server",
+        
+        "Syncler.Attribute.Base",
+        "Syncler.Attribute.Object",
+        "Syncler.Attribute.Array",
         
         "Syncler",
         "Syncler.Client"
