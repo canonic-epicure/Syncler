@@ -85,15 +85,6 @@ line.setX1(10)
 
 
 
-
-
-
-
-
-
-
-
-
 line.write({
     type        : 'Syncler.Mutation.Class.Attribute',
     
@@ -104,6 +95,8 @@ line.write({
 })
 
 line.setX1(10)
+
+
 
 
 
@@ -125,33 +118,3 @@ line.setX1(10) && line.setY1(10)
 line.set('x1', 10, 'y1', 15)
 
 
-
-
-
-
-
-replica.write(
-    {
-        type        : 'Syncler.Mutation.Attribute',
-        
-        object      : line,
-        
-        name        : 'x1',
-        value       : 10,
-        
-        consisteny  : 'firstwin'
-    }
-)
-
-// or
-
-line.write(
-    {
-        type        : 'Syncler.Mutation.Attribute',
-        
-        name        : 'x1',
-        value       : 10,
-        
-        consisteny  : 'firstwin'
-    }
-)

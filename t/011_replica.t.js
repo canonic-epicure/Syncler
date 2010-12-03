@@ -54,51 +54,49 @@ StartTest(function(t) {
         replica.setTopic(topic)
         
         
-        var op = replica.commit()
+        t.ok(replica.tentativeQueue.length == 7, 'Operation contains 6 mutations')
         
-        t.isa_ok(op, Syncler.Operation.Auto, 'Correct class for operation')
+        var mutation = replica.tentativeQueue[0]
         
+        t.isa_ok(mutation, Syncler.Mutation.Class.Create, 'Mutation is an instance creation')
         
-        t.ok(op.mutations.length == 6, 'Operation contains 6 mutations')
-        
-        var mutation1 = op.mutations[0]
-        
-        t.isa_ok(mutation1, Syncler.Mutation.Class.Create, 'Mutation is an instance creation')
-        
-        t.ok(mutation1.className == 'Topic', 'First is the creation of the Topic')
+        t.ok(mutation.className == 'Topic', 'First is the creation of the Topic')
 
         
         //======================================================================================================================================================================================================================================================
-        t.diag('Mutations internals')
+        t.diag('Replica internals')
         
-        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica and 1 topic and 2 composite attributes)')
+        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica, 1 topic and 2 composite attributes)')
         
         
         var topicID = replica.objectToId(topic)
-        
-        t.ok(topicID == topic.getTopicID(), 'Topic ID has been used as object ID')
         
         t.ok(replica.idToObject(topicID) == topic, 'Correct object resolved')
         
 
         //======================================================================================================================================================================================================================================================
-        t.diag('Operation unapply')
+        t.diag('Undo/redo')
         
-        op.unapply(replica)
+        replica.undo(7)
         
         t.ok(replica.getCount() == 1, 'No objects in scope (only replica)')
         
-        t.ok(op.checkPrecondition(replica), 'Operation can be applied to replica')
-        
-        //======================================================================================================================================================================================================================================================
-        t.diag('Apply operation back')
-        
-        op.apply(replica)
-        
-//        debugger
+        replica.redo(7)
         
         t.ok(replica.getCount() == 4, '4 objects in scope')
         
+        //======================================================================================================================================================================================================================================================
+        t.diag('Topic copy')
+        
+        var topic2 = replica.idToObject(topicID)
+        
+        t.isa_ok(topic2, Topic, 'Correct class for topic')
+        
+        t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
+        
+        t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
+        
+        t.ok(topic2 != topic, 'But its a different object')
         
         
         t.done()
