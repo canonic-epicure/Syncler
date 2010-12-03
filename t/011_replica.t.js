@@ -28,7 +28,7 @@ StartTest(function(t) {
             
             does        : Syncler.Topic.UUID,
             
-            hasSynced   : {
+            has         : {
                 
                 str         : 'foo-bar',
                 num         : 0,
