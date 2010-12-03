@@ -54,13 +54,14 @@ StartTest(function(t) {
         replica.setTopic(topic)
         
         
-        t.ok(replica.tentativeQueue.length == 7, 'Operation contains 6 mutations')
+        t.ok(replica.tentativeQueue.length == 3, 'Operation contains 3 mutations')
         
         var mutation = replica.tentativeQueue[0]
         
-        t.isa_ok(mutation, Syncler.Mutation.Class.Create, 'Mutation is an instance creation')
         
-        t.ok(mutation.className == 'Topic', 'First is the creation of the Topic')
+        t.isa_ok(mutation, Syncler.Mutation.Class.Create, 'First mutation is an instance creation')
+        
+        t.ok(mutation.className == 'Syncler.Attribute.Object', 'And its creation of `Syncler.Attribute.Object` (for topic initialization)')
 
         
         //======================================================================================================================================================================================================================================================
@@ -79,11 +80,11 @@ StartTest(function(t) {
         //======================================================================================================================================================================================================================================================
         t.diag('Undo/redo')
         
-        replica.undo(7)
+        replica.undo(3)
         
         t.ok(replica.getCount() == 1, 'No objects in scope (only replica)')
         
-        replica.redo(7)
+        replica.redo(3)
         
         t.ok(replica.getCount() == 4, '4 objects in scope')
         
