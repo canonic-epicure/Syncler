@@ -71,6 +71,8 @@ StartTest(function(t) {
         
         var topicID = replica.objectToId(topic)
         
+        t.ok(topicID == topic.getTopicID(), 'Topic ID has been used as object ID')
+        
         t.ok(replica.idToObject(topicID) == topic, 'Correct object resolved')
         
 
@@ -92,11 +94,11 @@ StartTest(function(t) {
         
         t.isa_ok(topic2, Topic, 'Correct class for topic')
         
-        t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
-        
-        t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
-        
         t.ok(topic2 != topic, 'But its a different object')
+        
+        t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
+        t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
+        t.ok(topic2.getTopicID() == topicID, 'Correct `topicID` for topic2')
         
         
         t.done()
