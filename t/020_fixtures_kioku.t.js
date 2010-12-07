@@ -31,7 +31,6 @@ StartTest(function(t) {
                 
                 data    : JSON2.stringify({ 
                     port            : port,
-                    fayeURL         : '/faye',
                     
                     backendClass    : 'KiokuJS.Backend.Hash'
                 })
@@ -39,11 +38,9 @@ StartTest(function(t) {
             }).andThen(function () {
                 
                 var backend = new KiokuJS.Backend.Hash({
-                    trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
+                    trait       : [ Syncler.Client, KiokuJS.Backend.Batch ],
                     
-                    baseURL : '/' + port,
-                    
-                    fayeClient  : {}
+                    baseURL     : '/' + port
                 })
                 
                 backend.__port__ = port

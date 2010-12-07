@@ -80,11 +80,11 @@ StartTest(function(t) {
         //======================================================================================================================================================================================================================================================
         t.diag('Undo/redo')
         
-        replica.undo(3)
+        replica.undoTentative()
         
         t.ok(replica.getCount() == 1, 'No objects in scope (only replica)')
         
-        replica.redo(3)
+        replica.redoTentative()
         
         t.ok(replica.getCount() == 4, '4 objects in scope')
         

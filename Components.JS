@@ -1,7 +1,8 @@
 COMPONENTS = {
     // a comment
     
-    "Core" : [
+    "Client" : [
+        "=static/deps/socket.io/socket.io.js",
         "Syncler.Mutation",
         
         "Syncler.Mutation.Class.Create",
@@ -45,23 +46,22 @@ COMPONENTS = {
         "jsan:Task.JSON2.Bundle",
         "jsan:Task.JooseX.Observable.Core",
         
-        "jsan:JooseX.Class.SimpleConstructor",
-        
-        "jsan:KiokuJS.Backend.Role.HTTP"
+        "jsan:JooseX.Class.SimpleConstructor"
     ],
     
     
     "Test" : [
         "jsan:Task.KiokuJS.Test",
         "jsan:Task.KiokuJS.Backend.CouchDB.Core",
+        "jsan:KiokuJS.Backend.Role.HTTP",
         "jsan:KiokuJS.Backend.Batch",
         
-        "+Core"
-//        ,
-//        "Syncler.Test.TestClass",
-//        "Syncler.Test.Actor",
-//        "Syncler.Test.Fixture.Basic",
-//        "Syncler.Test.Fixture.Transfer",
+        "+Client",
+        
+        "Syncler.Test.TestClass",
+        "Syncler.Test.Actor",
+        "Syncler.Test.Fixture.Transfer"
+        
 //        "Syncler.Test.Fixture.NewElement",
 //        "Syncler.Test.Fixture.StressLoad"
     ]

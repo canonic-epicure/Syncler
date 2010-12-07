@@ -12,7 +12,7 @@ var argv            = require('optimist').argv
 var backendClass    = argv.backendClass     && JSON.parse(argv.backendClass)     || 'KiokuJS.Backend.Hash'
 var backendParams   = argv.backendParams    && JSON.parse(argv.backendParams)    || {}
 var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)          || '/'
-var fayeURL         = argv.fayeURL          && JSON.parse(argv.fayeURL)          || '/faye'
+var socketRes       = argv.socketRes        && JSON.parse(argv.socketRes)        || 'socket.io'
 
 
 var port            = Number(argv.port)                                          || 8080
@@ -42,14 +42,16 @@ use([
         
         backendParams       : backendParams,
         
-        fayeURL             : fayeURL.replace(/\/$/, ''),
+        socketRes           : socketRes.replace(/\/$/, ''),
         baseURL             : baseURL.replace(/\/$/, ''),
         
         port                : port,
         
         app                 : app,
         
-        deepPrefetch        : deepPrefetch
+        deepPrefetch        : deepPrefetch,
+        
+        socketListener      : require('socket.io').listen(app, { resource : socketRes })
     })
 
     
@@ -59,7 +61,7 @@ use([
     puts('Backend class: : [' + backendClass + ']')
     puts('Backend configuration parameters: ' + JSON.stringify(backendParams))
     puts('BaseURL: [' + baseURL + ']')
-    puts('FayeURL: [' + fayeURL + ']')
+    puts('SocketURL: [' + socketRes + ']')
     puts('Port: [' + port + ']')
 })
 

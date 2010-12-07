@@ -35,8 +35,6 @@ StartTest(function(t) {
                 data    : JSON2.stringify({ 
                     port            : port,
                     
-                    fayeURL         : '/faye',
-                    
                     debugging       : debugging,
                     
                     backendClass    : 'KiokuJS.Backend.CouchDB',
@@ -55,7 +53,8 @@ StartTest(function(t) {
                     baseURL     : 'http://local/' + port,
                     dbURL       : dbURL,
                     
-                    fayeClient  : new Faye.Client('/' + port + '/faye')
+                    host        : 'local',
+                    resource    : port + '/socket.io'
                 })
                 
                 backend.__port__ = port
