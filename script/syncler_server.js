@@ -24,7 +24,10 @@ require('Task/Joose/NodeJS')
 use([
 
     'Syncler.ServerApp',
-    backendClass
+    backendClass,
+    
+    // XXX should load on demand
+    'Syncler.Test.TestClass'
 
 ], function () {
     
