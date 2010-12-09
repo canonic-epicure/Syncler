@@ -18,8 +18,7 @@ StartTest(function(t) {
     new KiokuJS.Test({
         t       : t,
         
-        fixtures    : [ '=Syncler.Test.Fixture.NewElement' ],
-        
+        fixtures    : [ '=Syncler.Test.Fixture.StressLoad' ],
         
         connect : function () {
             
@@ -35,8 +34,6 @@ StartTest(function(t) {
                 
                 data    : JSON2.stringify({ 
                     port            : port,
-                    
-                    fayeURL         : '/faye',
                     
                     debugging       : debugging,
                     
@@ -56,7 +53,8 @@ StartTest(function(t) {
                     baseURL     : 'http://local/' + port,
                     dbURL       : dbURL,
                     
-                    fayeClient  : new Faye.Client('/' + port + '/faye')
+                    host        : 'local',
+                    resource    : port + '/socket.io'
                 })
                 
                 backend.__port__ = port

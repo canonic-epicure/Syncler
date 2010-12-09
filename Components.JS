@@ -4,6 +4,7 @@ COMPONENTS = {
     "Client" : [
         "=static/deps/socket.io/socket.io.js",
         "Syncler.Mutation",
+        "Syncler.Mutation.Void",
         
         "Syncler.Mutation.Class.Create",
 //        "Syncler.Vero.Mutation.Delete",
@@ -60,9 +61,7 @@ COMPONENTS = {
         
         "Syncler.Test.TestClass",
         "Syncler.Test.Actor",
-        "Syncler.Test.Fixture.Transfer"
-        
-//        "Syncler.Test.Fixture.NewElement",
-//        "Syncler.Test.Fixture.StressLoad"
+        "Syncler.Test.Fixture.Transfer",
+        "Syncler.Test.Fixture.StressLoad"
     ]
 }

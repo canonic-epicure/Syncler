@@ -30,12 +30,11 @@ Harness.configure({
 
 Harness.start(
     '010_sanity.t.js',
+    
     '011_replica.t.js',
     
     '020_fixtures_kioku.t.js',
     
-    '040_fixture_transfer.t.js'
-    
-//    '050_fixture_new_element.t.js',
-//    '060_fixture_stressload.t.js'
+    '030_fixture_transfer.t.js',
+    '040_fixture_stressload.t.js'
 )
