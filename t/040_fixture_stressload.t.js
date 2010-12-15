@@ -54,7 +54,8 @@ StartTest(function(t) {
                     dbURL       : dbURL,
                     
                     host        : 'local',
-                    resource    : port + '/socket.io'
+                    port        : port,
+                    resource    : 'socket.io'
                 })
                 
                 backend.__port__ = port

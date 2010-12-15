@@ -15,15 +15,19 @@ var INC = (isNode ? require.paths : []).concat('../lib', '/jsan')
 Harness.configure({
     title       : 'Syncler Test Suite',
     
-    runCore     : 'sequential',
-    keepResults : true,
+    runCore         : 'sequential',
+    keepResults     : true,
+//    disableCaching  : false,
     
     preload : [
         "Task.Syncler.Prereq",
         {
             text : "use.paths = " + Harness.prepareINC(INC)
         },
-        "Task.Syncler.Test"
+        "Task.Syncler.Test",
+        {
+            text : "WebSocket.__initialize && WebSocket.__initialize()"
+        }
     ]
 })
 
