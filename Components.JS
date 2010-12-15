@@ -12,6 +12,10 @@ COMPONENTS = {
         
         "Syncler.Mutation.Array.Push",
         "Syncler.Mutation.Array.Set",
+        "Syncler.Mutation.Array.Splice",
+        
+        "Syncler.Mutation.Object.Set",
+        "Syncler.Mutation.Object.Remove",
         
         "Syncler.Observable",
         
