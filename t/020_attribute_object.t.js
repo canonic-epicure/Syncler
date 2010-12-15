@@ -57,11 +57,15 @@ StartTest(function(t) {
         
         
         //======================================================================================================================================================================================================================================================
-        t.diag('Object set mutation')
+        t.diag('Object mutations')
         
         var obj     = topic.obj
         
         obj.set('key', 'value')
+        
+        // {
+        //     key : 'value'                 
+        // }
         
         t.ok(obj.get('key') == 'value', 'Key has been set #1')
         t.ok(obj.hasOwnKey('key'), 'Key has been set #2')
@@ -72,10 +76,20 @@ StartTest(function(t) {
         
         obj.set('key2', 'value2')
         
+        // {
+        //     key  : 'value'                 
+        //     key2 : 'value2'                 
+        // }
+        
+        
         t.ok(replica.tentativeQueue.length == 5, 'New mutation has been added to tentative queue')
         
         
         obj.remove('key2')
+        
+        // {
+        //     key  : 'value'                 
+        // }
         
         t.ok(obj.get('key2') == undefined, 'Key has been unset #1')
         t.ok(!obj.hasOwnKey('key2'), 'Key has been unset #2')
@@ -89,11 +103,20 @@ StartTest(function(t) {
 
         replica.tentativeQueue[ 5 ].unapply(replica)
         
+        // {
+        //     key  : 'value'                 
+        //     key2 : 'value2'                 
+        // }
+        
         t.ok(obj.hasOwnKey('key2'), 'Key has been un-unset #1')
         t.ok(obj.get('key2') == 'value2', 'Key has been un-unset #2')
 
         
         replica.tentativeQueue[ 4 ].unapply(replica)
+        
+        // {
+        //     key : 'value'                 
+        // }
         
         t.ok(!obj.hasOwnKey('key2'), 'No `key2` yet')
         t.ok(obj.get('key2') == undefined, 'No `key2` yet')
@@ -101,47 +124,11 @@ StartTest(function(t) {
 
         replica.tentativeQueue[ 3 ].unapply(replica)
         
+        // {
+        // }
+        
         t.ok(!obj.hasOwnKey('key'), 'No `key` yet')
         t.ok(obj.get('key') == undefined, 'No `key` yet')
-        
-        
-//        
-//        //======================================================================================================================================================================================================================================================
-//        t.diag('Replica internals')
-//        
-//        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica, 1 topic and 2 composite attributes)')
-//        
-//        
-//        var topicID = replica.objectToId(topic)
-//        
-//        t.ok(topicID == topic.getTopicID(), 'Topic ID has been used as object ID')
-//        
-//        t.ok(replica.idToObject(topicID) == topic, 'Correct object resolved')
-//        
-//
-//        //======================================================================================================================================================================================================================================================
-//        t.diag('Undo/redo')
-//        
-//        replica.undoTentative()
-//        
-//        t.ok(replica.getCount() == 1, 'No objects in scope (only replica)')
-//        
-//        replica.redoTentative()
-//        
-//        t.ok(replica.getCount() == 4, '4 objects in scope')
-//        
-//        //======================================================================================================================================================================================================================================================
-//        t.diag('Topic copy')
-//        
-//        var topic2 = replica.idToObject(topicID)
-//        
-//        t.isa_ok(topic2, Topic, 'Correct class for topic')
-//        
-//        t.ok(topic2 != topic, 'But its a different object')
-//        
-//        t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
-//        t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
-//        t.ok(topic2.getTopicID() == topicID, 'Correct `topicID` for topic2')
         
         
         t.done()

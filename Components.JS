@@ -11,6 +11,7 @@ COMPONENTS = {
         "Syncler.Mutation.Class.Attribute",
         
         "Syncler.Mutation.Array.Push",
+        "Syncler.Mutation.Array.Pop",
         "Syncler.Mutation.Array.Set",
         "Syncler.Mutation.Array.Splice",
         
