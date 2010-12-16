@@ -67,6 +67,7 @@ COMPONENTS = {
         "Syncler.Test.TestClass",
         "Syncler.Test.Actor",
         "Syncler.Test.Fixture.Transfer",
+        "Syncler.Test.Fixture.Transfer2",
         "Syncler.Test.Fixture.StressLoad"
     ]
 }
