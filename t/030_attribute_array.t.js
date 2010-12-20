@@ -61,74 +61,75 @@ StartTest(function(t) {
         
         var arr     = topic.arr
         
+        arr.push('value3', 'value4')
+        
+        // [ 'value3', 'value4' ]
+        
+        t.is_deeply(arr.value, [ 'value3', 'value4' ], 'Correct array after all mutations')
+
+        t.ok(replica.tentativeQueue.length == 4, 'New mutation has been added to tentative queue')
+        t.isa_ok(replica.tentativeQueue[ 3 ], Syncler.Mutation.Array.Push, 'Correct class for new mutation')
+
+        
         arr.set(0, 'value')
         
-        // [ 'value' ]
+        // [ 'value', 'value4' ]
         
-        t.ok(arr.get(0) == 'value', '0 index has been set #1')
-        t.ok(arr.length() == 1, '0 index has been set #2')
+        t.is_deeply(arr.value, [ 'value', 'value4' ], 'Correct array after all mutations')
+        t.ok(replica.tentativeQueue.length == 5, 'New mutation has been added to tentative queue')
         
-        t.ok(replica.tentativeQueue.length == 4, 'New mutation has been added to tentative queue')
-        t.isa_ok(replica.tentativeQueue[ 3 ], Syncler.Mutation.Array.Set, 'Correct class for new mutation')
-
+        t.isa_ok(replica.tentativeQueue[ 4 ], Syncler.Mutation.Array.Set, 'Correct class for new mutation')
+        
         
         arr.set(1, 'value2')
         
         // [ 'value', 'value2' ]
         
         t.is_deeply(arr.value, [ 'value', 'value2' ], 'Correct array after all mutations')
-        t.ok(replica.tentativeQueue.length == 5, 'New mutation has been added to tentative queue')
-        
-        
-        arr.push('value3', 'value4')
-        
-        // [ 'value', 'value2', 'value3', 'value4' ]
-        
-        t.is_deeply(arr.value, [ 'value', 'value2', 'value3', 'value4' ], 'Correct array after all mutations')
         t.ok(replica.tentativeQueue.length == 6, 'New mutation has been added to tentative queue')
-        t.isa_ok(replica.tentativeQueue[ 5 ], Syncler.Mutation.Array.Push, 'Correct class for new mutation')
+        t.isa_ok(replica.tentativeQueue[ 5 ], Syncler.Mutation.Array.Set, 'Correct class for new mutation')
         
         
         arr.unshift('value-1', 'value0')
         
-        // [ 'value-1', 'value0', 'value', 'value2', 'value3', 'value4' ]
+        // [ 'value-1', 'value0', 'value', 'value2' ]
         
         t.ok(replica.tentativeQueue.length == 7, 'New mutation has been added to tentative queue')
-        t.is_deeply(arr.value, [ 'value-1', 'value0', 'value', 'value2', 'value3', 'value4' ], 'Correct array after all mutations')
+        t.is_deeply(arr.value, [ 'value-1', 'value0', 'value', 'value2' ], 'Correct array after all mutations')
         t.isa_ok(replica.tentativeQueue[ 6 ], Syncler.Mutation.Array.Splice, 'Correct class for new mutation')
         
 
         
         var value = arr.shift()
         
-        // [ 'value0', 'value', 'value2', 'value3', 'value4' ]
+        // [ 'value0', 'value', 'value2' ]
         
         t.ok(value == 'value-1', 'Correct value returned from `shift`')
         
         t.ok(replica.tentativeQueue.length == 8, 'New mutation has been added to tentative queue')
-        t.is_deeply(arr.value, [ 'value0', 'value', 'value2', 'value3', 'value4' ], 'Correct array after all mutations')
+        t.is_deeply(arr.value, [ 'value0', 'value', 'value2' ], 'Correct array after all mutations')
         t.isa_ok(replica.tentativeQueue[ 7 ], Syncler.Mutation.Array.Splice, 'Correct class for new mutation')
         
 
         var value = arr.pop()
         
-        // [ 'value0', 'value', 'value2', 'value3' ]
+        // [ 'value0', 'value' ]
         
-        t.ok(value == 'value4', 'Correct value returned from `pop`')
+        t.ok(value == 'value2', 'Correct value returned from `pop`')
         
         t.ok(replica.tentativeQueue.length == 9, 'New mutation has been added to tentative queue')
-        t.is_deeply(arr.value, [ 'value0', 'value', 'value2', 'value3' ], 'Correct array after all mutations')
+        t.is_deeply(arr.value, [ 'value0', 'value' ], 'Correct array after all mutations')
         t.isa_ok(replica.tentativeQueue[ 8 ], Syncler.Mutation.Array.Pop, 'Correct class for new mutation')
         
         
-        var values = arr.splice(1, 2, 'splice')
+        var values = arr.splice(0, 2, 'splice')
         
-        // [ 'value0', 'splice', 'value3' ]
+        // [ 'splice' ]
         
-        t.is_deeply(values, [ 'value', 'value2' ], 'Correct values returned from `splice`')
+        t.is_deeply(values, [ 'value0', 'value' ], 'Correct values returned from `splice`')
         
         t.ok(replica.tentativeQueue.length == 10, 'New mutation has been added to tentative queue')
-        t.is_deeply(arr.value, [ 'value0', 'splice', 'value3' ], 'Correct array after all mutations')
+        t.is_deeply(arr.value, [ 'splice' ], 'Correct array after all mutations')
         t.isa_ok(replica.tentativeQueue[ 9 ], Syncler.Mutation.Array.Splice, 'Correct class for new mutation')
         
         
@@ -138,32 +139,32 @@ StartTest(function(t) {
 
         replica.tentativeQueue[ 9 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value0', 'value', 'value2', 'value3' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value0', 'value' ], 'Correctly rolled back the state of array')
 
         
         replica.tentativeQueue[ 8 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value0', 'value', 'value2', 'value3', 'value4' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value0', 'value', 'value2' ], 'Correctly rolled back the state of array')
         
         
         replica.tentativeQueue[ 7 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value-1', 'value0', 'value', 'value2', 'value3', 'value4' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value-1', 'value0', 'value', 'value2' ], 'Correctly rolled back the state of array')
 
         
         replica.tentativeQueue[ 6 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value', 'value2', 'value3', 'value4' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value', 'value2' ], 'Correctly rolled back the state of array')
 
         
         replica.tentativeQueue[ 5 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value', 'value2' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value', 'value4' ], 'Correctly rolled back the state of array')
         
         
         replica.tentativeQueue[ 4 ].unapply(replica)
         
-        t.is_deeply(arr.value, [ 'value' ], 'Correctly rolled back the state of array')
+        t.is_deeply(arr.value, [ 'value3', 'value4' ], 'Correctly rolled back the state of array')
         
         
         replica.tentativeQueue[ 3 ].unapply(replica)

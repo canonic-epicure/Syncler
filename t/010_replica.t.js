@@ -95,7 +95,7 @@ StartTest(function(t) {
         
         t.isa_ok(topic2, Topic, 'Correct class for topic')
         
-        t.ok(topic2 != topic, 'But its a different object')
+        t.ok(topic2 == topic, 'And its the same object (to keep the references)')
         
         t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
         t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
