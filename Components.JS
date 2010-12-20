@@ -3,11 +3,12 @@ COMPONENTS = {
     
     "Client" : [
         "=static/deps/socket.io/socket.io.js",
+        "Syncler.Observable",
+        
         "Syncler.Mutation",
         "Syncler.Mutation.Void",
         
         "Syncler.Mutation.Class.Create",
-//        "Syncler.Vero.Mutation.Delete",
         "Syncler.Mutation.Class.Attribute",
         
         "Syncler.Mutation.Array.Push",
@@ -18,8 +19,6 @@ COMPONENTS = {
         "Syncler.Mutation.Object.Set",
         "Syncler.Mutation.Object.Remove",
         
-        "Syncler.Observable",
-        
         "Syncler.Object.Attribute",
         "Syncler.Object.Meta",
         
@@ -29,7 +28,6 @@ COMPONENTS = {
         
         "Syncler.Replica",
         "Syncler.Replica.Client",
-//        "Syncler.Replica.Server",
         
         "Syncler.Attribute.Base",
         "Syncler.Attribute.Object",
