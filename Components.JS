@@ -37,6 +37,11 @@ COMPONENTS = {
         "Syncler.Client"
     ],
     
+    // a name all get used to
+    "Core" : [
+        "+Client"
+    ],
+    
     
     "Prereq" : [
         "jsan:Task.Joose.Core",

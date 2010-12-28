@@ -14,6 +14,8 @@ var backendParams   = argv.backendParams    && JSON.parse(argv.backendParams)   
 var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)          || '/'
 var socketRes       = argv.socketRes        && JSON.parse(argv.socketRes)        || 'socket.io'
 
+var preload         = argv.preload                                               || []
+
 
 var port            = Number(argv.port)                                          || 8080
 var deepPrefetch    = argv.deepPrefetch                                          || false
@@ -24,12 +26,9 @@ require('Task/Joose/NodeJS')
 use([
 
     'Syncler.ServerApp',
-    backendClass,
-    
-    // XXX should load on demand
-    'Syncler.Test.TestClass'
+    backendClass
 
-], function () {
+].concat(preload), function () {
     
     var app = express.createServer()
     
