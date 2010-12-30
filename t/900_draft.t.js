@@ -83,29 +83,56 @@ replica.write({
 line.setX1(10)
 
 
+this.line.on('/mutation/class/Syncler.Mutation.Class.Attribute', function (e, mutation) {
+
+})
+
+
 
 
 line.write({
-    type        : 'Syncler.Mutation.Class.Attribute',
+    type            : 'Syncler.Mutation.Class.Attribute',
     
-    name        : 'x1',
-    value       : 10,
+    attributeName   : 'x1',
+    newValue        : 10,
     
-    consisteny  : 'firstwin'
+    consisteny      : 'firstwin',
+    
+    label           : 'startPointX'
 })
 
 line.setX1(10)
 
 
+this.line.on('/mutation/label/startPointX', function (e, mutation) {
 
-line.set({
-    x1          : 10,
-    y1          : 15
 })
 
 
 
 
+line.set('coords', {
+    x1          : 10,
+    y1          : 15
+})
+
+this.line.on('/mutation/label/coords', function (e, mutation) {
+
+})
+
+
+
+
+line.set({
+    status      : 'element'
+}, {
+    label       : 'status',
+    consistency : 'lastWin'
+})
+
+this.line.on('/mutation/label/coords', function (e, mutation) {
+
+})
 
 
 
