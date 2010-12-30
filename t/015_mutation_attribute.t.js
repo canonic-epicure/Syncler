@@ -49,7 +49,6 @@ StartTest(function(t) {
             
             t.ok(mutation.attrValues.str == 'bar-baz', 'Correct values collected for `str`')
             
-            
         }, null, { single : true })
         
 
@@ -91,7 +90,7 @@ StartTest(function(t) {
         
         topic.on('/mutation/apply/attribute', function (event, mutation) {
             
-            reachedTopic        = false
+            reachedTopic        = true
 
             MUT = mutation
             
