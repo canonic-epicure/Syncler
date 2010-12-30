@@ -17,6 +17,8 @@ Harness.configure({
     
     runCore         : 'sequential',
     keepResults     : true,
+    
+    transparentEx   : true,
 //    disableCaching  : false,
     
     preload : [
