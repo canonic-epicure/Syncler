@@ -98,24 +98,14 @@ line.setX1(10)
 
 
 
+line.set({
+    x1          : 10,
+    y1          : 15
+})
 
 
 
-line.set(
-    {
-        name        : 'x1',
-        value       : 10
-    },
-    {
-        name        : 'y1',
-        value       : 15
-    }
-)
 
-
-line.setX1(10) && line.setY1(10)
-
-line.set('x1', 10, 'y1', 15)
 
 
 
