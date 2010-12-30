@@ -118,3 +118,27 @@ line.setX1(10) && line.setY1(10)
 line.set('x1', 10, 'y1', 15)
 
 
+
+
+
+
+
+replica.on('/create/ShareBoard.Model.Board.Element', this.onNewBoardElement, this)
+
+replica.on('/create/*', this.onNewBoardElement, this, {
+    
+    filter : function (event, instance) {
+        return instance instanceof ShareBoard.Model.Board.Element
+    }
+})
+
+
+board.on('new-element', this.onNewBoardElement, this)
+
+replica.on('mutation', function (replica, instance, mutation) {
+    
+    if ((mutation instanceof Syncler.Vero.Mutation.Create) && (instance instanceof ShareBoard.Model.Board.Element)) me.onNewBoardElement(board, instance)
+})
+
+
+replica.onInstanceMutation('ShareBoard.Model.Board.Element', this.onElementMutation, this)

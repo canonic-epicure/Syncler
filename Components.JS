@@ -23,8 +23,6 @@ COMPONENTS = {
         "Syncler.Object.Meta",
         
         "Syncler.Object",
-        "Syncler.Topic",
-        "Syncler.Topic.UUID",
         
         "Syncler.Replica",
         "Syncler.Replica.Client",
@@ -34,7 +32,10 @@ COMPONENTS = {
         "Syncler.Attribute.Array",
         
         "Syncler",
-        "Syncler.Client"
+        "Syncler.Client",
+        
+        "Syncler.Topic",
+        "Syncler.Topic.UUID"
     ],
     
     // a name all get used to

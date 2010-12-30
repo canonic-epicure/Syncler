@@ -102,6 +102,18 @@ StartTest(function(t) {
         t.ok(topic2.getTopicID() == topicID, 'Correct `topicID` for topic2')
         
         
+        //======================================================================================================================================================================================================================================================
+        t.diag('getInheritanceChainOf')
+        
+        t.isDeeply(replica.getInheritanceChainOf(Topic), [ 'Topic' ], 'Correct result for `getInheritanceChainOf`')
+        
+        Class('SubTopic', {
+            isa     : Topic
+        })
+        
+        t.isDeeply(replica.getInheritanceChainOf(SubTopic), [ 'Topic', 'SubTopic' ], 'Correct result for `getInheritanceChainOf`')
+        
+        
         t.done()
     })
     
