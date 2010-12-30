@@ -37,6 +37,21 @@ StartTest(function(t) {
             }
         })
         
+        var reachedCreate       = false
+        var createSource        
+
+        replica.on('/mutation/apply/create', function (event, mutation) {
+            
+            reachedCreate       = true
+            createSource        = event.source
+            
+            t.isa_ok(mutation, Syncler.Mutation.Class.Create, 'Correct class for mutation')
+            
+            t.ok(mutation.attrValues.str == 'bar-baz', 'Correct values collected for `str`')
+            
+            
+        }, null, { single : true })
+        
 
         //======================================================================================================================================================================================================================================================
         t.diag('Topic instantiation')
@@ -49,16 +64,51 @@ StartTest(function(t) {
         
         replica.setTopic(topic)
         
+        t.ok(reachedCreate, 'Event reached replica')
+        t.ok(createSource == topic, 'Correct source for `create` mutation')
+        
         t.ok(replica.tentativeQueue.length == 1, 'Replica contains 1 mutations')
+        
         
         
         //======================================================================================================================================================================================================================================================
         t.diag('Attribute mutations')
         
+        var MUT
+        var reachedReplica      = false
+        var reachedTopic        = false
+        
+        replica.on('/mutation/apply/attribute', function (event, mutation) {
+
+            reachedReplica      = true
+            
+            t.ok(event.source == topic, 'Correct source for `create` mutation')
+            
+            t.ok(mutation == MUT, 'The same mutation is being propagated to replica')
+        
+        }, null, { single : true })
+        
+        
+        topic.on('/mutation/apply/attribute', function (event, mutation) {
+            
+            reachedTopic        = false
+
+            MUT = mutation
+            
+            t.ok(event.source == topic, 'Correct source for `create` mutation')
+            t.isa_ok(mutation, Syncler.Mutation.Class.Attribute, 'Correct class for mutation')
+            
+            t.ok(mutation.attributeName == 'str', 'Correct attribute is being mutated')
+            t.ok(mutation.hasOldValue, 'Attribute has old value')
+            t.ok(mutation.oldValue == 'bar-baz', 'Correct old value')
+        
+        }, null, { single : true })
+        
+        
         var res = topic.setStr('baz')
         
         // {
-        //     key : 'value'                 
+        //     str : 'baz'                 
         // }
         
         t.isa_ok(res,  Syncler.Mutation.Class.Attribute, 'Setter returned the mutation')
@@ -66,6 +116,8 @@ StartTest(function(t) {
         
         t.ok(replica.tentativeQueue.length == 2, 'New mutation has been added to tentative queue')
         t.isa_ok(replica.tentativeQueue[ 1 ], Syncler.Mutation.Class.Attribute, 'Correct class for new mutation')
+        
+        t.ok(reachedTopic && reachedReplica, 'Event bubbled to replica')
 
         
 //        obj.set('key2', 'value2')
