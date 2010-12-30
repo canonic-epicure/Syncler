@@ -40,7 +40,7 @@ Harness.start(
     '020_attribute_object.t.js',
     '030_attribute_array.t.js',
     
-    '100_fixtures_kioku.t.js',
+//    '100_fixtures_kioku.t.js',
     
     '110_fixture_transfer.t.js',
     '115_fixture_transfer2.t.js',
