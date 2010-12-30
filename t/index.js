@@ -37,8 +37,9 @@ Harness.start(
     
     '010_replica.t.js',
     
-    '020_attribute_object.t.js',
-    '030_attribute_array.t.js',
+    '015_mutation_attribute.t.js',
+    '020_mutation_object.t.js',
+    '030_mutation_array.t.js',
     
 //    '100_fixtures_kioku.t.js',
     

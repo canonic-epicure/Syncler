@@ -53,7 +53,7 @@ StartTest(function(t) {
         
         replica.setTopic(topic)
         
-        t.ok(replica.tentativeQueue.length == 3, 'Operation contains 3 mutations')
+        t.ok(replica.tentativeQueue.length == 3, 'Replica contains 3 mutations')
         
         
         //======================================================================================================================================================================================================================================================
