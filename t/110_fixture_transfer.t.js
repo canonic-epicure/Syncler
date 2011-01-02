@@ -81,7 +81,9 @@ StartTest(function(t) {
                 })
             })
                 
-            backend.__deleteDB().now()
+            backend.__deleteDB()
+            
+            this.CONT.now()
         }
         
     }).runAllFixtures().andThen(function () {

@@ -51,9 +51,13 @@ app.put('/start_test', function (req, res) {
         if (initialOutput) {
             initialOutput = false
             
-            res.send({
-                result : 'ok'
-            })
+            // give some time for the ServerApp to start and load the dependencies
+            setTimeout(function () {
+                
+                res.send({
+                    result : 'ok'
+                })
+            }, 500)
         }
     })
     
