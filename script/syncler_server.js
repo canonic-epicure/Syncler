@@ -9,6 +9,8 @@ faye        = require('faye') // make it global to skip loading as a dependency 
 
 var argv            = require('optimist').argv
 
+puts('Arguments: ' + JSON.stringify(argv))
+
 var backendClass    = argv.backendClass     && JSON.parse(argv.backendClass)     || 'KiokuJS.Backend.Hash'
 var backendParams   = argv.backendParams    && JSON.parse(argv.backendParams)    || {}
 var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)          || '/'
