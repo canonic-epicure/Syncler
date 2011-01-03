@@ -17,6 +17,7 @@ var baseURL         = argv.baseURL          && JSON.parse(argv.baseURL)         
 var socketRes       = argv.socketRes        && JSON.parse(argv.socketRes)        || 'socket.io'
 
 var preload         = argv.preload                                               || []
+var persistLog      = argv.persistLog == 'false' ? false : true
 
 
 var port            = Number(argv.port)                                          || 8080
@@ -55,7 +56,9 @@ use([
         
         deepPrefetch        : deepPrefetch,
         
-        socketListener      : require('socket.io').listen(app, { resource : socketRes })
+        socketListener      : require('socket.io').listen(app, { resource : socketRes }),
+        
+        persistLog          : persistLog
     })
 
     
