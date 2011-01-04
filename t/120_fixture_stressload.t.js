@@ -48,7 +48,7 @@ StartTest(function(t) {
                 if (debugging) alert('Open debug inspector')
                 
                 var backend = new KiokuJS.Backend.CouchDB({
-                    trait   : [ Syncler.Client, KiokuJS.Backend.Batch ],
+                    trait       : [ Syncler.Client, KiokuJS.Backend.Batch ],
                     
                     baseURL     : 'http://local/' + port,
                     dbURL       : dbURL,
