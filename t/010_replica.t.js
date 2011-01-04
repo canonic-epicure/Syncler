@@ -54,7 +54,7 @@ StartTest(function(t) {
         replica.setTopic(topic)
         
         
-        t.ok(replica.tentativeQueue.length == 3, 'Operation contains 3 mutations')
+        t.ok(replica.tentativeQueue.length == 4, 'Replica contains 3 mutations')
         
         var mutation = replica.tentativeQueue[0]
         
@@ -67,7 +67,7 @@ StartTest(function(t) {
         //======================================================================================================================================================================================================================================================
         t.diag('Replica internals')
         
-        t.ok(replica.getCount() == 4, '4 objects in scope (1 replica, 1 topic and 2 composite attributes)')
+        t.ok(replica.getCount() == 5, '5 objects in scope (1 replica, 1 topic, 1 flash and 2 composite attributes)')
         
         
         var topicID = replica.objectToId(topic)
@@ -86,7 +86,7 @@ StartTest(function(t) {
         
         replica.redoTentative()
         
-        t.ok(replica.getCount() == 4, '4 objects in scope')
+        t.ok(replica.getCount() == 5, '5 objects in scope')
         
         //======================================================================================================================================================================================================================================================
         t.diag('Topic copy')

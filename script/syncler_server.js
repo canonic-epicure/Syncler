@@ -74,6 +74,6 @@ use([
 
 
 process.on('uncaughtException', function (err) {
-    console.log('exception: ' + err)
-    console.log('stack: ' + err.stack)
+    puts('exception: ' + err)
+    puts('stack: ' + err.stack)
 })
