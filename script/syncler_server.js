@@ -56,7 +56,7 @@ use([
         
         deepPrefetch        : deepPrefetch,
         
-        socketListener      : require('socket.io').listen(app, { resource : socketRes }),
+        socketListener      : require('socket.io').listen(app, { resource : socketRes, log : function () {} }),
         
         persistLog          : persistLog
     })
