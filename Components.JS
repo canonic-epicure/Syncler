@@ -34,6 +34,7 @@ COMPONENTS = {
         "Syncler",
         "Syncler.Client",
         
+        "Syncler.Topic.Flash",
         "Syncler.Topic",
         "Syncler.Topic.UUID"
     ],
