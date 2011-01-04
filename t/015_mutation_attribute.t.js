@@ -30,7 +30,10 @@ StartTest(function(t) {
             
             has         : {
                 str         : 'foo-bar',
-                num         : 0
+                num         : 0,
+                
+                // suppress FLASH creation
+                FLASH       : null
             },
             
             methods : {

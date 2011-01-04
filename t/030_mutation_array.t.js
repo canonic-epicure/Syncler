@@ -34,7 +34,10 @@ StartTest(function(t) {
                 num         : 0,
                 
                 obj         : Syncler.I.Object,
-                arr         : Syncler.I.Array
+                arr         : Syncler.I.Array,
+                
+                // suppress FLASH creation
+                FLASH       : null
             },
             
             methods : {
