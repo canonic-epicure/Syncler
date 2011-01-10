@@ -43,6 +43,8 @@ Harness.start(
     '020_mutation_object.t.js',
     '030_mutation_array.t.js',
     
+    '040_mutation_group.t.js',
+    
 //    '100_fixtures_kioku.t.js',
 //    
     '110_fixture_transfer.t.js',
