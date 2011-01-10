@@ -27,9 +27,9 @@ COMPONENTS = {
         "Syncler.Replica",
         "Syncler.Replica.Client",
         
-        "Syncler.Attribute.Base",
-        "Syncler.Attribute.Object",
-        "Syncler.Attribute.Array",
+        "Syncler.Composite",
+        "Syncler.Composite.Object",
+        "Syncler.Composite.Array",
         
         "Syncler",
         "Syncler.Client",

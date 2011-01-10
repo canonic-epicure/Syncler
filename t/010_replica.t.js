@@ -61,7 +61,7 @@ StartTest(function(t) {
         
         t.isa_ok(mutation, Syncler.Mutation.Class.Create, 'First mutation is an instance creation')
         
-        t.ok(mutation.className == 'Syncler.Attribute.Object', 'And its creation of `Syncler.Attribute.Object` (for topic initialization)')
+        t.ok(mutation.className == 'Syncler.Composite.Object', 'And its creation of `Syncler.Composite.Object` (for topic initialization)')
 
         
         //======================================================================================================================================================================================================================================================
@@ -98,7 +98,7 @@ StartTest(function(t) {
         t.ok(topic2 == topic, 'And its the same object (to keep the references)')
         
         t.ok(topic2.str == 'bar-baz', 'Correct `str` for topic2')
-        t.isa_ok(topic2.obj, Syncler.Attribute.Object, 'Correct class for `obj` for topic2')
+        t.isa_ok(topic2.obj, Syncler.Composite.Object, 'Correct class for `obj` for topic2')
         t.ok(topic2.getTopicID() == topicID, 'Correct `topicID` for topic2')
         
         
