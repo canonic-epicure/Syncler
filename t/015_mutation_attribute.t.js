@@ -33,7 +33,8 @@ StartTest(function(t) {
                 num         : 0,
                 
                 // suppress FLASH creation
-                FLASH       : null
+                FLASH       : null,
+                ownFlash    : null
             },
             
             methods : {

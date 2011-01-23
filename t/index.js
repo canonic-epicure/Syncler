@@ -18,7 +18,7 @@ Harness.configure({
     runCore         : 'sequential',
     keepResults     : true,
     
-    transparentEx   : true,
+//    transparentEx   : true,
 //    disableCaching  : false,
     
     preload : [
@@ -37,18 +37,19 @@ Harness.configure({
 Harness.start(
     '001_sanity.t.js',
     
-    '010_replica.t.js',
+    '010_replica_basics.t.js',
     
     '015_mutation_attribute.t.js',
     '020_mutation_object.t.js',
     '030_mutation_array.t.js',
     
-    '040_mutation_group.t.js',
+//    '040_mutation_group.t.js',
     
 //    '100_fixtures_kioku.t.js',
-//    
-    '110_fixture_transfer.t.js',
-    '115_fixture_transfer2.t.js',
     
-    '120_fixture_stressload.t.js'
+    '110_fixture_transfer.t.js'
+//    ,
+//    '115_fixture_transfer2.t.js',
+//    
+//    '120_fixture_stressload.t.js'
 )

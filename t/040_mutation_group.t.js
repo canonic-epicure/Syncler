@@ -37,7 +37,8 @@ StartTest(function(t) {
                 arr         : Syncler.I.Array,
                 
                 // suppress FLASH creation
-                FLASH       : null
+                FLASH       : null,
+                ownFlash    : null
             },
             
             methods : {
