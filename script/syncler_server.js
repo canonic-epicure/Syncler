@@ -2,8 +2,8 @@ require.paths.unshift('./lib')
 
 
 var http    = require('http')
-var sys     = require('sys')
-var puts    = sys.puts
+var util = require('util')
+var puts    = util.puts
 var express = require('express')
 faye        = require('faye') // make it global to skip loading as a dependency of Syncler
 
